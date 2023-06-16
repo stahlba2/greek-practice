@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Noto+Sans+Display">
+    <script>
+        window.options = [
+            { word: 'ἂγγελος', def: 'angel; messenger' },
+            { word: 'ἀμήν', def: 'amen' },
+            { word: 'ἂνθρωπος', def: 'man' },
+            { word: 'ἀπόστολος', def: 'apostle; envoy; messenger' },
+            { word: 'Γαλιλαία', def: 'Galilee' },
+            { word: 'γραφή', def: 'writing; Scripture' },
+            { word: 'δὀχα', def: 'glory; majesty; fame' },
+            { word: 'ἐγώ', def: 'I' },
+            { word: 'ἒσχατος', def: 'last' },
+            { word: 'ζωή', def: 'life; soul' },
+            { word: 'θεός', def: 'God; a god' },
+            { word: 'καί', def: 'and; even; also; namely' },
+            { word: 'καρδία', def: 'heart; inner self' },
+            { word: 'λόγος', def: 'word; Word; statement; message' },
+            { word: 'πνεῦμα', def: 'spirit; Spirit; wind; breath; inner life' },
+            { word: 'προφήτης', def: 'prophet' },
+            { word: 'σἀββατον', def: 'sabbath; week' },
+            { word: 'φωνή', def: 'sound; voice; noise' },
+            { word: 'Χριστός', def: 'Christ; Messaiah; Annointed one' },
+            { word: 'Ἀβραάμ', def: 'Abraham' },
+            { word: 'Δαυίδ', def: 'David' },
+            { word: 'Παύλος', def: 'Paul' },
+            { word: 'Πέτρος', def: 'Peter' },
+            { word: 'Πιλᾶτος', def: 'Pilate' },
+            { word: 'Ζίμων', def: 'Simon' },
+            { word: 'ἀγάπη', def: 'love' },
+            { word: 'ἂλλος', def: 'other; another' },
+            { word: 'αύτός', def: 'he; she; it; him; her; they; them' },
+            { word: 'βασιλεία', def: 'kingdom' },
+            { word: 'δἐ', def: 'but; and' },
+            { word: 'ἐν', def: 'in; on; among' },
+            { word: 'ἒργον', def: 'work; deed; action' },
+            { word: 'καιρός', def: 'time; season' },
+            { word: 'νῦν', def: 'now' },
+            { word: 'ὁ', def: 'the' },
+            { word: 'ἡ', def: 'the' },
+            { word: 'τό', def: 'the' },
+            { word: 'ὅτι', def: 'that; since; because; ""' },
+            { word: 'οὐ', def: 'not' },
+            { word: 'ὥρα', def: 'hour; occassion; moment' },
+            { word: 'ἀμαρτία', def: 'sin' },
+            { word: 'ἀρχή', def: 'beginning; ruler' },
+            { word: 'γάρ', def: 'for; then' },
+            { word: 'εἶπεν', def: 'he/she/it said; he said; she said; it said' },
+            { word: 'εἰς', def: 'into; in' },
+            { word: 'ἐξουσία', def: 'authority; power' },
+            { word: 'εὑαγγέλιον', def: 'Gospel; good news' },
+            { word: 'Ἰησοῦς', def: 'Jesus; Joshua' },
+            { word: 'κὐριος', def: 'Lord; lord; master; sir' },
+            { word: 'μή', def: 'not; lest' },
+            { word: 'οὐρανός', def: 'heaven; sky' },
+            { word: 'οὗτος', def: 'this; these' },
+            { word: 'αὓτη', def: 'this; these' },
+            { word: 'τοῦτο', def: 'this; these' },
+            { word: 'σύ', def: 'thou; you' },
+            { word: 'υἱός', def: 'son; descendant' },
+            { word: 'ὢστε', def: 'therefore; so that' },
+            { word: 'ἀλλά', def: 'but; yet; rather' },
+            { word: 'ἀπό (genative)', def: 'from' },
+            { word: 'διἀ (genative)', def: 'through' },
+            { word: 'διἀ (accusative)', def: 'on account of' },
+            { word: 'εἰμί', def: 'I am; exist; live; am present' },
+            { word: 'ἐκ', def: 'from; out of' },
+            { word: 'έξ', def: 'from; out of' },
+            { word: 'ἡμέρα', def: 'day' },
+            { word: 'ἧν', def: 'he/she/it was' },
+            { word: 'θάλλασσα', def: 'sea; lake' },
+            { word: 'θἀνατος', def: 'death' },
+            { word: 'ἳνα', def: 'in order that; that; so that' },
+            { word: 'Ἰωάννης', def: 'John' },
+            { word: 'λέγω', def: 'I speak' },
+            { word: 'μετά (genative)', def: 'with' },
+            { word: 'μετά (accusative)', def: 'after' },
+            { word: 'οἰκία', def: 'house' },
+            { word: 'οἶκος', def: 'house' },
+            { word: 'ὂχλος', def: 'crowd; multitude' },
+            { word: 'παρά (genative)', def: 'from' },
+            { word: 'παρά (dative)', def: 'beside; in the presence of' },
+            { word: 'παρά (accusative)', def: 'alongside of' },
+            { word: 'παραβολή', def: 'parable' },
+            { word: 'πρός', def: 'to; towards; with' },
+            { word: 'ὑπό (genative)', def: 'by' },
+            { word: 'ὑπό (accusative)', def: 'under' },
+            { word: 'ἀγαθός', def: 'good; useful' },
+            { word: 'ἀγαπητός', def: 'beloved' },
+            { word: 'ἂγιος', def: 'holy; saints' },
+            { word: 'αἰώνιος', def: 'eternal' },
+            { word: 'άλλήλων', def: 'one another' },
+            { word: 'ἀπεκρίθη', def: 'he/she/it answered' },
+            { word: 'δοῦλος', def: 'slave; servant' },
+            { word: 'ἐάν', def: 'if; when' },
+            { word: 'ἐμός', def: 'my' },
+            { word: 'ἐμή', def: 'my' },
+            { word: 'ἐμόν', def: 'my' },
+            { word: 'ἐντολή', def: 'commandment' },
+            { word: 'καθώς', def: 'as; even as' },
+            { word: 'κακός', def: 'bad; evil' },
+            { word: 'μου', def: 'my' },
+            { word: 'νεκρός', def: 'dead' },
+            { word: 'πιστός', def: 'faithful; believers' },
+            { word: 'πονηρός', def: 'evil' },
+            { word: 'πρῶτος', def: 'first' },
+            { word: 'τρίτος', def: 'third' }
+
+        ];
+    </script>
+    <style>
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-bottom: 10px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-row-gap: 10px;
+        }
+
+        .card {
+            box-shadow: inset;
+        }
+        .skip {
+            margin-top: 40px;
+        }
+        .skip button {
+            border: 1px solid black;
+            background-color: #dedede;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .game-area {
+            padding: 0 20px;
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+        input {
+            font-size: 18px;
+            padding: 8px;
+        }
+        .game-area-box {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-column-gap: 8px;
+        }
+        .prev-info-box {
+            background-color: #dedede;
+            padding: 8px;
+            border-radius: 8px;
+        }
+        .options,
+        .prev-info-box {
+            padding: 8px 0;
+        }
+        #previous-info {
+            padding: 0 8px;
+        }
+        .prev-info-box.correct {
+            background-color: #8f8;
+        }
+        .prev-info-box.incorrect {
+            background-color: #f88;
+        }
+        .game-stat {
+            font-size: 24px;
+        }
+        .game-stat:last-child {
+            text-align: right;
+        }
+        * {
+            font-family: 'Noto Sans Display';
+        }
+        h1 {
+            font-weight: normal;
+            font-size: 48px;
+            margin: 0;
+        }
+        @media only screen and (max-width: 1000px) {
+            body .game-area {
+                max-width: 100%;
+            }
+            body .game-area-box {
+                grid-template-columns: 1fr;
+                grid-row-gap: 60px;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="game-area">
+        <div class="meta-grid">
+            <div class="game-stat" id="triesstat"></div>
+            <div class="game-stat" id="correctstat"></div>
+        </div>
+        <div class="game-area-box">
+            <div class="options">
+                <div class="card">
+                    <h1 id="question"></h1>
+                    <p id="error"></p>
+                </div>
+                <div class="card">
+                    <input id="answer" placeholder="Answer..." type="text" />
+                </div>
+                <div class="skip">
+                    <button type="button" id="skipBtn">Skip</button>
+                </div>
+            </div>
+            <div class="prev-info-box">
+                <div id="previous-info"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const question = document.querySelector('#question');
+            const answer = document.querySelector('#answer');
+            const error = document.querySelector('#error');
+            const correctStat = document.querySelector('#correctstat');
+            const triesStat = document.querySelector('#triesstat');
+            const skipBtn = document.querySelector('#skipBtn');
+            const previousInfo = document.querySelector('#previous-info');
+            const previousInfoBox = document.querySelector('.prev-info-box');
+            let possibilities = window.options.slice();
+            let currentAnswer = undefined;
+            let correctInRow = 0;
+            let tries = 0;
+            const setPrevInfo = (prev) => {
+                previousInfoBox.style.display = prev ? null : 'none';
+                previousInfo.innerHTML = prev ? `
+                    <h1>${prev.word}</h1>
+                    ${prev.def.split(';').map(y => `<p>${y.trim()}</p>`).join('')}` : '';
+            }
+            const setQuestion = () => {
+                error.textContent = '';
+                answer.value = '';
+                setPrevInfo(currentAnswer);
+                let options = possibilities;
+                currentAnswer = options[Math.floor(Math.random() * options.length)]
+                question.textContent = currentAnswer.word;
+
+            };
+            const setStatsUi = () => {
+                correctStat.textContent = 'Correct: ' + correctInRow.toString();
+                triesStat.textContent = 'Attempts: ' + tries.toString();
+            };
+            setQuestion();
+            setStatsUi();
+            answer.onchange = () => {
+                const a = answer.value.toLowerCase().trim();
+                const possible = currentAnswer.def.split(';').map(x => x.toLowerCase().trim());
+                if (possible.includes(a)) {
+                    if (tries === 0 && currentAnswer) {
+                        possibilities.splice(possibilities.indexOf(currentAnswer), 1); 
+                    }
+                    if (possibilities.length === 0) {
+                        possibilities = window.options.slice();
+                    }
+                    correctInRow += 1;
+                    tries = 0;
+                    setQuestion();
+                    previousInfoBox.classList.remove('incorrect');
+                    previousInfoBox.classList.add('correct');
+                } else {
+                    correctInRow = 0;
+                    tries += 1;
+                    error.textContent = 'Incorrect';
+                    answer.value = '';
+                }
+                setStatsUi();
+            }
+            skipBtn.onclick = () => {
+                correctInRow = 0;
+                tries = 0;
+                previousInfoBox.classList.remove('correct');
+                previousInfoBox.classList.add('incorrect');
+                setQuestion();
+                setStatsUi();
+                answer.focus();
+            };
+            answer.focus();
+        }());   
+    </script>
+</body>
+
+</html>
