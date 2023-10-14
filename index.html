@@ -355,8 +355,41 @@
             { word: 'πέπωκα', def: 'I have drunk', part: 'perfect active', chapter: 23},
             { word: 'ἐπόθην', def: 'I was being drunk', part: 'aorist passive', chapter: 23},
 
-            
-            //{ word: '', def: '', chapter: 23},
+
+            { word: 'ἄγω', def: 'I lead; I bring; I arrest', chapter: 24},
+            { word: 'ἦγον', def: 'I was leading; I was bringing; I was arresting', part: 'imperfect active', chapter: 24},
+            { word: 'ἄξω', def: 'I will lead; I will bring; I will arrest', part: 'future active', chapter: 24},
+            { word: 'ἦγαγον', def: 'I led; I brought; I arrested', part: 'second aorist active', chapter: 24},
+            { word: 'ἤχθην', def: 'I was being led, I was being brought; I was being arrested', part: 'aorist passive', chapter: 24},
+            { word: 'αἶμα, αἶματος, τὀ', def: 'blood', chapter: 24},
+            { word: 'ἔκαστος, η, ον', def: 'each; every', chapter: 24},
+            { word: 'ἰμάτιον, ου, τὀ', def: 'garment; cloak', chapter: 24},
+            { word: 'ὄρος, ὄρους', def: 'hill; mountain', chapter: 24},
+            { word: 'ὑπάγω', def: 'I depart', chapter: 24},
+            { word: 'ὑπῆγον', def: 'I was departing', part: 'imperfect active', chapter: 24},
+            { word: 'φοβέομαι', def: 'I fear', chapter: 24},
+            { word: 'ἐφοβούμην', def: 'I was fearing', part: 'imperfect active', chapter: 24},
+            { word: 'ἐφοβήθην', def: 'I feared', part: 'aorist passive', chapter: 24},
+            { word: 'χαίρω', def: 'I rejoice', chapter: 24},
+            { word: 'ἔχαιρον', def: 'I was rejoicing', part: 'imperfect active', chapter: 24},
+            { word: 'ἐχάρην', def: 'I was rejoicing', part: 'second aorist passive', chapter: 24},
+
+            { word: 'αἰτέω', def: 'I ask; I demand', chapter: 25},
+            { word: 'ᾔτουν', def: 'I was asking; I was demanding', chapter: 25},
+            { word: 'αἰτήσω', def: 'I will ask; I will demand', chapter: 25},
+            { word: 'ᾔτησα', def: 'I asked; I demanded', chapter: 25},
+            { word: 'ᾔτηκα', def: 'I have asked', chapter: 25},
+            { word: 'μᾶλλον', def: 'more; rather', chapter: 25},
+            { word: 'μαρτυρέω', def: 'I bear witness; I testify', chapter: 25},
+            { word: 'ἐμαρτύρουν', def: 'I was bearing witness; I was testifying', part: 'imperfect', chapter: 25},
+            { word: 'μαρτυρησω', def: 'I will bear witness; I will testify', part: 'future active', chapter: 25},
+            { word: 'ἐμαρτὐρησα', def: 'I bore witness; I testified', part: 'aorist active', chapter: 25},
+            { word: 'μεμαρτύρηκα', def: 'I have borne witness; I have testified', part: 'perfect active', chapter: 25},
+            { word: 'μεμαρτύρημαι', def: 'I have borne witness for myself; I have testified for myself', part: 'perfect middle', chapter: 25},
+            { word: 'ἐμαρτυρήθην', def: 'I was witnessed; I was testified', part: 'aorist passive', chapter: 25},
+
+
+            //{ word: '', def: '', chapter: 25},
 
         ];
     </script>
@@ -520,9 +553,12 @@
 
             const setPrevInfo = (prev) => {
                 previousInfoBox.style.display = prev ? null : 'none';
+                console.log(prev);
                 previousInfo.innerHTML = prev ? `
                     <h1>${prev.word}</h1>
-                    ${prev.def.split(';').map(y => `<p>${y.trim()}</p>`).join('')}` : '';
+                    ${(prev.part ? `<p>(${prev.part})</p>` : '')}
+                    ${prev.def.split(';').map(y => `<p>${y.trim()}</p>`).join('')}
+                    ` : '';
             }
             const setQuestion = () => {
                 error.textContent = '';
