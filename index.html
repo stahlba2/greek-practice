@@ -498,6 +498,29 @@
         .chapter-container select {
             font-size: 24px;
         }
+        .multiple-choice-option {
+            display: block;
+            width: 100%;
+            padding: 5px 10px;
+            font-size: 20spx;
+            background-color: #fff;
+            border-radius: 4px;
+            border: 1px solid #333;
+            margin-bottom: 10px;
+        }
+        .multiple-choice-option:focus,
+        .multiple-choice-option:hover {
+            background-color: #4B9DE6;
+            color: #fff;
+            cursor: pointer;
+        }
+        .multiple-choice-option:last-child {
+            margin-bottom: 0;
+        }
+        .multiplie-choice-placeholder {
+            display: flex;
+            flex-direction: column;
+        }
         * {
             font-family: 'Noto Sans Display';
         }
@@ -544,6 +567,7 @@
                     <p id="error"></p>
                 </div>
                 <div class="card">
+                    <div class="multiple-choice-placeholder"></div>
                         <input id="answer" placeholder="Answer..." type="text" />
                 </div>
                 <div class="skip">
@@ -558,6 +582,8 @@
 
     <script>
         (function () {
+            const queryParams = new URLSearchParams(window.location.search);
+            const multipleChoiceQueryParamKey = 'multipleChoice';
             const chapter = document.querySelector('#chapter');
             const question = document.querySelector('#question');
             const answer = document.querySelector('#answer');
@@ -567,6 +593,9 @@
             const skipBtn = document.querySelector('#skipBtn');
             const previousInfo = document.querySelector('#previous-info');
             const previousInfoBox = document.querySelector('.prev-info-box');
+            const isMultipleChoice = queryParams.has(multipleChoiceQueryParamKey);
+            const multipleChoiceQuantity = isNaN(parseInt(queryParams.get(multipleChoiceQueryParamKey))) ? 4 : parseInt(queryParams.get(multipleChoiceQueryParamKey));
+            const multipleChoiceParent = document.querySelector('.multiple-choice-placeholder');
             let possibilities = window.options.slice();
             let currentAnswer = undefined;
             let correctInRow = 0;
@@ -584,14 +613,48 @@
                 option.textContent = allChapters[x];
                 chapter.appendChild(option);
             });
+            const getDefOptionsFromItem = (item) => {
+                return item.def.split(';').map(x => x.trim());
+            }
 
+            Array.prototype.sortRandom = function () {
+                for (let i = this.length -1; i > 0; i--) {
+                    j = Math.floor(Math.random() * i)
+                    k = this[i]
+                    this[i] = this[j]
+                    this[j] = k
+                }
+                return this;
+            };
+            const setMultipleChoice = () => {
+                if (!isMultipleChoice) {
+                    multipleChoiceParent.style.display = 'none';
+                    return;
+                }
+                answer.style.position = 'absolute';
+                answer.style.top = '-999999px';
+                answer.style.left = '-999999px';
+                multipleChoiceParent.innerHTML = '';
+                const multiSelectOptions = possibilities.filter(x => x !== currentAnswer).sortRandom().slice(0, multipleChoiceQuantity - 1);
+                multiSelectOptions.push(currentAnswer);
+                let html = '';
+                multiSelectOptions.sortRandom().forEach(y => {
+                    const part = getDefOptionsFromItem(y).sortRandom()[0];
+                    html += `<button class="multiple-choice-option" type="button">${part}</button>`;
+                });
+                multipleChoiceParent.innerHTML = html;
+                multipleChoiceParent.onclick = (evt) => {
+                    answer.value = evt.target.textContent.trim();
+                    answer.dispatchEvent(new CustomEvent('change'));
+                }
+            }
             const setPrevInfo = (prev) => {
                 previousInfoBox.style.display = prev ? null : 'none';
                 console.log(prev);
                 previousInfo.innerHTML = prev ? `
                     <h1>${prev.word}</h1>
                     ${(prev.part ? `<p>(${prev.part})</p>` : '')}
-                    ${prev.def.split(';').map(y => `<p>${y.trim()}</p>`).join('')}
+                    ${getDefOptionsFromItem(prev).map(y => `<p>${y}</p>`).join('')}
                     ` : '';
             }
             const setQuestion = () => {
@@ -601,6 +664,7 @@
                 let options = possibilities;
                 currentAnswer = options[Math.floor(Math.random() * options.length)]
                 question.textContent = currentAnswer.word;
+                setMultipleChoice();
 
             };
             const setStatsUi = () => {
