@@ -567,7 +567,7 @@
                     <p id="error"></p>
                 </div>
                 <div class="card">
-                    <div class="multiple-choice-placeholder"></div>
+                    <div class="multiple-choice-placeholder" tabindex="-1"></div>
                         <input id="answer" placeholder="Answer..." type="text" />
                 </div>
                 <div class="skip">
@@ -647,7 +647,7 @@
                     answer.value = evt.target.textContent.trim();
                     answer.dispatchEvent(new CustomEvent('change'));
                 }
-                answer.focus();
+                multipleChoiceParent.focus();
             }
             const setPrevInfo = (prev) => {
                 previousInfoBox.style.display = prev ? null : 'none';
